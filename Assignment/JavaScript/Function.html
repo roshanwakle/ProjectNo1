@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1 way
+        function show()
+        {
+            console.log("show !!!!!!")
+        }
+        show();
+         
+        //2 way
+        function addition()
+        {
+            return 10+20;
+        }
+        let result=addition();
+        document.write(result)
+
+        document.write("----"+addition())
+
+        //3 way
+        function area(l,b)
+        {
+           return l*b;
+        }
+        console.log("area of rectangle"+area(4,5))
+
+        //4 way function with expression
+        var addresult=function addnum(a,b)
+        {
+            console.log(a+b)
+        }
+        addresult(6,7)
+
+        //5 ananomous function
+
+        var num=function()
+        {
+            return "i am anonimous function"
+        }
+        document.write("<br>"+num())
+
+        //arrow function ()=>{}
+        var ans=()=>{
+            document.write("<br> Arrow function")
+        }
+        ans();
+
+        var res=()=>document.write("<br> hi am new")
+        document.write("<br> hi 2 am new")
+        res();
+
+
+        var add=(a,b)=>{
+            return a+b;
+        }
+        console.log(add(900+100))
+
+        //rest parameter
+        function display(...a)
+        {
+            console.log(a)
+        }
+        display(1,2,3,4,5)
+
+
+
+        function restpar(str,...a)
+        {
+            console.log(str)
+            console.log(a)
+        }
+        restpar("roshan",4,5,5);
+        restpar(7,8,9,6,2.5)
+
+
+    </script>
+</body>
+</html>

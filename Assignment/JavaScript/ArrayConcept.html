@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var color=["red","yelow","blue"];
+       console.log(color)
+       document.write(color)
+
+
+       for(let i=0;i<color.length;i++)
+       {
+             document.write(color[i]+"<br>")
+       }
+        // of , in
+       document.write("<br>")
+       for(let cl of color)
+       {
+           document.write(cl+"<br>")
+       }
+
+       for(let cl in color)
+       {
+           document.write(cl+"<br>")
+       }
+
+
+       var arr=new Array(10,20,30);
+       console.log(arr)
+       //methods of array
+       
+       arr.push(100);
+       console.log(arr)
+
+       arr.pop();
+       console.log(arr)
+
+       arr.unshift(400);
+       console.log(arr)
+
+       arr.push();
+       console.log(arr)
+
+       arr.shift();
+       console.log(arr)
+
+       console.log(color)
+       color.sort();
+
+       arr.sort()
+       console.log(arr);
+    </script>
+</body>
+</html>
