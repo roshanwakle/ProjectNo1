@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userName="roshan";
+        let dep="HR";
+
+        let user={
+            userName,dep
+        };
+
+        console.log(user.userName);
+        console.log(user.dep);
+ 
+        //-----------------------------------------------------------------------
+        let employee={
+            fname="Roshan",
+            lname="wakle",
+
+            fullName:function()
+            {
+                return this.fname+" "+this.lname
+            }
+
+        };
+        console.log(employee.fullname());
+
+        // using Object.assign()
+        
+        //Object.is()
+        let result=Object.is("welcome","welcome")
+        console.log("result is"+result)
+
+        let num=Object.is(1,1);
+        console.log("result"+num);
+
+
+        let check={a:5}
+        let check1={a:5}
+        console.log(Object.is(check,check1))
+
+    </script>
+</body>
+</html>
