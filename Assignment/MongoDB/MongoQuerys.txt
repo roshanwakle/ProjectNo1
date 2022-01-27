@@ -1,0 +1,202 @@
+1)Insert
+use Employee
+
+db.Employee.find().pretty()
+{
+        "_id" : ObjectId("61f2847cc476985d695c0ea2"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea3"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea4"),
+        "empname" : "Arti",
+        "empid" : 101,
+        "empsal" : 50000,
+        "department" : "Production"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 102,
+        "empsal" : 60000,
+        "depatment" : "Testing"
+
+
+        Insert many
+
+        db.Employee.insertMany({})
+
+        2) Update
+       * db.Employee.updateOne({empname:"Arti"},{$set:{empsal:65000}})
+       db.Employee.find().pretty()
+{
+        "_id" : ObjectId("61f2847cc476985d695c0ea2"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea3"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea4"),
+        "empname" : "Arti",
+        "empid" : 101,
+        "empsal" : 65000,
+        "department" : "Production"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 102,
+        "empsal" : 60000,
+        "depatment" : "Testing",
+        "Age" : 25,
+        "job" : "MERN Devloper"
+
+
+       * db.Employee.updateMany({empname:"Prachi"},{$set:{Age:25,job:"MERN Devloper"}})
+        db.Employee.find().pretty()
+{
+        "_id" : ObjectId("61f2847cc476985d695c0ea2"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea3"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea4"),
+        "empname" : "Arti",
+        "empid" : 101,
+        "empsal" : 50000,
+        "department" : "Production"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 102,
+        "empsal" : 60000,
+        "depatment" : "Testing",
+        "Age" : 25,
+        "job" : "MERN Devloper"
+
+        *db.Employee.replaceOne({empname:"Rahul"},{name:"Uma" ,Age:28})
+        * db.Employee.find().pretty()
+{ "_id" : ObjectId("61f2847cc476985d695c0ea2"), "name" : "Uma", "Age" : 28 }
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea3"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR",
+        "age" : 29
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea4"),
+        "empname" : "Arti",
+        "empid" : 101,
+        "empsal" : 65000,
+        "department" : "Production"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 102,
+        "empsal" : 60000,
+        "depatment" : "Testing",
+        "Age" : 25,
+        "job" : "MERN Devloper"
+}
+
+
+
+3) Delete
+
+db.Employee.remove({name:"Uma"})
+ db.Employee.find().pretty()
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea3"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR",
+        "age" : 29
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea4"),
+        "empname" : "Arti",
+        "empid" : 101,
+        "empsal" : 65000,
+        "department" : "Production"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 102,
+        "empsal" : 60000,
+        "depatment" : "Testing",
+        "Age" : 25,
+        "job" : "MERN Devloper"
+}
+
+4)Update of embedded documents
+db.Employee.update({name:"Rahul",age:29},{"$set":{"age":30}})
+
+
+5)limit, skip, sort and count the results of the find()
+method
+* db.Employee.find({}).skip(2)
+
+db.Employee.find({}).skip(2).pretty()
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 102,
+        "empsal" : 60000,
+        "depatment" : "Testing",
+        "Age" : 25,
+        "job" : "MERN Devloper"
+}
+
+
+
+sort():Descending Order
+
+*db.Employee.find({}).sort({"empname":-1})
+
+{ "_id" : ObjectId("61f28501c476985d695c0ea3"), "empname" : "Rahul", "empid" : 100, "empsal" : 45000, "department" : "HR", "age" : 29 }
+{ "_id" : ObjectId("61f28501c476985d695c0ea5"), "empname" : "Prachi", "empid" : 102, "empsal" : 60000, "depatment" : "Testing", "Age" : 25, "job" : "MERN Devloper" }
+{ "_id" : ObjectId("61f28501c476985d695c0ea4"), "empname" : "Arti", "empid" : 101, "empsal" : 65000, "department" : "Production" }
+
+sort():Ascending Order
+*db.Employee.find({}).sort({"empname":1})
+{ "_id" : ObjectId("61f28501c476985d695c0ea4"), "empname" : "Arti", "empid" : 101, "empsal" : 65000, "department" : "Production" }
+{ "_id" : ObjectId("61f28501c476985d695c0ea5"), "empname" : "Prachi", "empid" : 102, "empsal" : 60000, "depatment" : "Testing", "Age" : 25, "job" : "MERN Devloper" }
+{ "_id" : ObjectId("61f28501c476985d695c0ea3"), "empname" : "Rahul", "empid" : 100, "empsal" : 45000, "department" : "HR", "age" : 29 }
+
+
+ db.Employee.find({}).sort({"name":-1}).skip(1).limit(2)
+
+ { "_id" : ObjectId("61f28501c476985d695c0ea4"), "empname" : "Arti", "empid" : 101, "empsal" : 65000, "department" : "Production" }
+{ "_id" : ObjectId("61f28501c476985d695c0ea5"), "empname" : "Prachi", "empid" : 102, "empsal" : 60000, "depatment" : "Testing", "Age" : 25, "job" : "MERN Devloper" }

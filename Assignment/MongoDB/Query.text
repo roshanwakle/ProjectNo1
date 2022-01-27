@@ -1,0 +1,20 @@
+ Query Document - Using AND, OR and IN
+Conditions
+
+*AND Queries
+
+db.Employee.find({"empname":"Rahul","age":{"$gte":29}})
+
+
+{ "_id" : ObjectId("61f28501c476985d695c0ea3"), "empname" : "Rahul", "empid" : 100, "empsal" : 45000, "department" : "HR", "age" : 29 }
+
+*OR Queries
+db.Employee.find({empname:"Rahul",$or:[{empid:100},{empid:101}]})
+{ "_id" : ObjectId("61f28501c476985d695c0ea3"), "empname" : "Rahul", "empid" : 100, "empsal" : 45000, "department" : "HR", "age" : 29 }
+
+*IN Queries
+
+db.Employee.find({empname:{$in:["Rahul","Prachi"]}})
+
+{ "_id" : ObjectId("61f28501c476985d695c0ea3"), "empname" : "Rahul", "empid" : 100, "empsal" : 45000, "department" : "HR", "age" : 29 }
+{ "_id" : ObjectId("61f28501c476985d695c0ea5"), "empname" : "Prachi", "empid" : 102, "empsal" : 60000, "depatment" : "Testing", "Age" : 25, "job" : "MERN Devloper" }
