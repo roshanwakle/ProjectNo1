@@ -18,3 +18,158 @@ db.Employee.find({empname:{$in:["Rahul","Prachi"]}})
 
 { "_id" : ObjectId("61f28501c476985d695c0ea3"), "empname" : "Rahul", "empid" : 100, "empsal" : 45000, "department" : "HR", "age" : 29 }
 { "_id" : ObjectId("61f28501c476985d695c0ea5"), "empname" : "Prachi", "empid" : 102, "empsal" : 60000, "depatment" : "Testing", "Age" : 25, "job" : "MERN Devloper" }
+
+
+1)Upsert
+*findAndModify()
+db.Employee.findAndModify({query:{empname:"Prachi"},update:{$set:{empid:600}},upsert:true})
+ db.Employee.find().pretty()
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea3"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR",
+        "age" : 29
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea4"),
+        "empname" : "Arti",
+        "empid" : 101,
+        "empsal" : 65000,
+        "department" : "Production"
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 600,
+        "empsal" : 60000,
+        "depatment" : "Testing",
+        "Age" : 25,
+        "job" : "MERN Devloper"
+}
+
+Upser with Update*
+
+db.Employee.update({empname:"Arti"},{$set:{phoneNo:9874569874},$setOnInsert:{gender:"female"}},{upsert:true})
+ db.Employee.find().pretty()
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea3"),
+        "empname" : "Rahul",
+        "empid" : 100,
+        "empsal" : 45000,
+        "department" : "HR",
+        "age" : 29
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea4"),
+        "empname" : "Arti",
+        "empid" : 101,
+        "empsal" : 65000,
+        "department" : "Production",
+        "phoneNo" : 9874569874
+}
+{
+        "_id" : ObjectId("61f28501c476985d695c0ea5"),
+        "empname" : "Prachi",
+        "empid" : 600,
+        "empsal" : 60000,
+        "depatment" : "Testing",
+        "Age" : 25,
+        "job" : "MERN Devloper"
+}
+
+2) unwind operator
+use student
+db.student.insertOne({name:"Ramesh",age:20,MoN:748965785,company:"abc",skill:["C","C++","Java","Python","javascript"]})
+db.student.find().pretty()
+{
+        "_id" : ObjectId("61f37a11c476985d695c0ea6"),
+        "name" : "Ramesh",
+        "age" : 20,
+        "MoN" : 748965785,
+        "company" : "abc",
+        "skill" : [
+                "C",
+                "C++",
+                "Java",
+                "Python",
+                "javascript"
+        ]
+}
+
+db.student.aggregate({$project:{name:1,age:1,MoN:1,company:1}},{$unwind:"$skill"})
+
+*Divide operator
+db.product.insertMany({
+        "_id" : 1,
+        "name" : "Mobile",
+        "totalPrice" : 100000,
+        "totalQuantity" : 50,
+        "billYear" : 2018
+    },
+    {
+        "_id" : 2,
+        "name" : "Keyboard",
+        "totalPrice" : 5000,
+        "totalQuantity" : 10,
+        "billYear" : 2017
+    },
+    {
+        "_id" : 3,
+        "name" : "Mouse",
+        "totalPrice" : 2000,
+        "totalQuantity" : 5,
+        "billYear" : 2018
+    },
+    {
+        "_id" : 4,
+        "name" : "Memory Card",
+        "totalPrice" : 2500,
+        "totalQuantity" : 25,
+        "billYear" : 2019
+    },
+    {
+        "_id" : 5,
+        "name" : "Mobile",
+        "totalPrice" : 20000,
+        "totalQuantity" : 4,
+        "billYear" : 2020
+    },
+    {
+        "_id" : 6,
+        "name" : "Mobile",
+        "totalPrice" : 25000,
+        "totalQuantity" : 2,
+        "billYear" : 2021
+    },
+    {
+        "_id" : 7,
+        "name" : "Memory Card",
+        "totalPrice" : 1000,
+        "totalQuantity" : 10,
+        "billYear" : 2019
+    },
+    {
+        "_id" : 8,
+        "name" : "Pen drive",
+        "totalPrice" : 15000,
+        "totalQuantity" : "Two",
+        "billYear" : 2018
+    },
+    {
+        "_id" : 9,
+        "name" : "Laptop",
+        "billDetail" : {
+                               "totalPrice" : 45000,
+                               "totalQuantity" : 1,
+                              }
+        "billYear" : 2021
+    },
+    {
+        "_id" : 10,
+        "name" : "Memory Carde",
+        "totalPrice" : 4000,
+        "totalQuantity" : 50,
+        "billYear" : 2020
+    })
