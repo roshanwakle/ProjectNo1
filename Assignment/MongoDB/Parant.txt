@@ -1,0 +1,168 @@
+
+
+
+
+
+db.Student.find().pretty()
+{
+        "_id" : ObjectId("61f3fff3955779ea8c30974c"),
+        "id" : 101,
+        "name" : "Abhishekh",
+        "marks" : 90,
+        "address" : "Mumbai",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974d"),
+        "id" : 101,
+        "name" : "Abhishekh",
+        "marks" : 60,
+        "address" : "Mumbai",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974e"),
+        "id" : 102,
+        "name" : "raju",
+        "marks" : 70,
+        "address" : "Pune",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974f"),
+        "id" : 103,
+        "name" : "Vaishnavi",
+        "marks" : 60,
+        "address" : "Goa",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c309750"),
+        "id" : 104,
+        "name" : "priti",
+        "marks" : 85,
+        "address" : "Pune",
+        "gender" : "male"
+}
+
+1) find Number of Student for each marks
+db.Student.find({marks:{$gt:50}}).pretty()
+
+db.Student.find({marks:{$gt:50}}).pretty()
+{
+        "_id" : ObjectId("61f3fff3955779ea8c30974c"),
+        "id" : 101,
+        "name" : "Abhishekh",
+        "marks" : 60,
+        "address" : "Mumbai",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974d"),
+        "id" : 101,
+        "name" : "Abhishekh",
+        "marks" : 60,
+        "address" : "Mumbai",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974e"),
+        "id" : 102,
+        "name" : "raju",
+        "marks" : 70,
+        "address" : "Pune",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974f"),
+        "id" : 103,
+        "name" : "Vaishnavi",
+        "marks" : 60,
+        "address" : "Goa",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c309750"),
+        "id" : 104,
+        "name" : "priti",
+        "marks" : 85,
+        "address" : "Pune",
+        "gender" : "male"
+}
+
+
+2)Find StudentCount For each city
+
+db.Student.count({address : {$in: ['Pune','Mumbai','Mumbai','Goa']}})
+Ans Count 5
+db.Student.find({address : {$in: ['Pune','Mumbai','Mumbai','Goa']}}).pretty()
+
+
+{
+        "_id" : ObjectId("61f3fff3955779ea8c30974c"),
+        "id" : 101,
+        "name" : "Abhishekh",
+        "marks" : 60,
+        "address" : "Mumbai",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974d"),
+        "id" : 101,
+        "name" : "Abhishekh",
+        "marks" : 60,
+        "address" : "Mumbai",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974e"),
+        "id" : 102,
+        "name" : "raju",
+        "marks" : 70,
+        "address" : "Pune",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c30974f"),
+        "id" : 103,
+        "name" : "Vaishnavi",
+        "marks" : 60,
+        "address" : "Goa",
+        "gender" : "female"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c309750"),
+        "id" : 104,
+        "name" : "priti",
+        "marks" : 85,
+        "address" : "Pune",
+        "gender" : "male"
+}
+
+3)find sum of all students marks
+db.Student.aggregate([{$group:{_id:null,"TotalMarks":{$sum:"$marks"}}}])
+
+ db.Student.aggregate([{$group:{_id:null,"TotalMarks":{$sum:"$marks"}}}])
+{ "_id" : null, "TotalMarks" : 335 }
+
+
+4)find Student count whho got greater than 60 marks
+db.Student.count({marks:{$gt:60}})
+Ans 2
+db.Student.find({marks:{$gt:60}}).pretty()
+{
+        "_id" : ObjectId("61f40136955779ea8c30974e"),
+        "id" : 102,
+        "name" : "raju",
+        "marks" : 70,
+        "address" : "Pune",
+        "gender" : "male"
+}
+{
+        "_id" : ObjectId("61f40136955779ea8c309750"),
+        "id" : 104,
+        "name" : "priti",
+        "marks" : 85,
+        "address" : "Pune",
+        "gender" : "male"
+}
